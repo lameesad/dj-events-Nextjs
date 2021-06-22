@@ -64,7 +64,7 @@ export default function AddEventPage({ token }) {
         <Layout title='Add New Event'>
             <Link href='/events'>Go Back</Link>
             <h1>Add Event</h1>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.grid}>
                     <div>

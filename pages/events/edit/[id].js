@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
 import Layout from '@/components/Layout'
-// import Modal from '@/components/Modal'
+import Modal from '@/components/Modal'
 // import ImageUpload from '@/components/ImageUpload'
 import { API_URL } from '@/config/index'
 import styles from '@/styles/Form.module.css'
@@ -26,6 +26,9 @@ export default function EditEventPage({ evt }) {
     const [imagePreview, setImagePreview] = useState(
         evt.image ? evt.image.formats.thumbnail.url : null
     )
+
+    const [showModal, setShowModal] = useState(false)
+
     const router = useRouter()
 
     const handleSubmit = async (e) => {
@@ -153,10 +156,10 @@ export default function EditEventPage({ evt }) {
             {imagePreview ? (
                 <Image src={imagePreview} height={100} width={170} />
             ) : (
-                    <div>
-                        <p>No image uploaded</p>
-                    </div>
-                )}
+                <div>
+                    <p>No image uploaded</p>
+                </div>
+            )}
 
             <div>
                 <button
@@ -166,6 +169,15 @@ export default function EditEventPage({ evt }) {
                     <FaImage /> Set Image
         </button>
             </div>
+
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
+                IMAGE UPLOAD
+                {/* <ImageUpload
+                    evtId={evt.id}
+                    imageUploaded={imageUploaded}
+                    token={token}
+                /> */}
+            </Modal>
         </Layout>
     )
 }

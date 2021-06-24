@@ -23,18 +23,19 @@ export const AuthProvider = ({ children }) => {
         // })
 
         // const data = await res.json()
-
-        // if (res.ok) {
-        //     setUser(data.user)
-        //     router.push('/account/dashboard')
-        // } else {
-        //     setError(data.message)
-        //     setError(null)
-        // }
+        console.log(data.user)
+        if (res.ok) {
+            setUser(data.user)
+            // router.push('/account/dashboard')
+        } else {
+            setError(data.message)
+            setError(null)
+        }
     }
 
     // Login user
     const login = async ({ email: identifier, password }) => {
+
         const res = await fetch(`${NEXT_URL}/api/login`, {
             method: 'POST',
             headers: {

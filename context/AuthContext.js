@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         console.log(data.user)
         if (res.ok) {
             setUser(data.user)
-            // router.push('/account/dashboard')
+            router.push('/account/dashboard')
         } else {
             setError(data.message)
             setError(null)
@@ -60,26 +60,26 @@ export const AuthProvider = ({ children }) => {
 
     // Logout user
     const logout = async () => {
-        // const res = await fetch(`${NEXT_URL}/api/logout`, {
-        //     method: 'POST',
-        // })
+        const res = await fetch(`${NEXT_URL}/api/logout`, {
+            method: 'POST',
+        })
 
-        // if (res.ok) {
-        //     setUser(null)
-        //     router.push('/')
-        // }
+        if (res.ok) {
+            setUser(null)
+            router.push('/')
+        }
     }
 
     // Check if user is logged in
     const checkUserLoggedIn = async (user) => {
-        // const res = await fetch(`${NEXT_URL}/api/user`)
-        // const data = await res.json()
+        const res = await fetch(`${NEXT_URL}/api/user`)
+        const data = await res.json()
 
-        // if (res.ok) {
-        //     setUser(data.user)
-        // } else {
-        //     setUser(null)
-        // }
+        if (res.ok) {
+            setUser(data.user)
+        } else {
+            setUser(null)
+        }
     }
 
     return (
